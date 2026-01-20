@@ -24,11 +24,11 @@ product-manager-agent/
 │   ├── design.md
 │   ├── plan.md
 │   ├── develop.md
-│   ├── test.md
+│   ├── verify.md
 │   ├── feature.md
 │   ├── update.md
-│   ├── review.md
-│   └── status.md
+│   ├── audit.md
+│   └── progress.md
 ├── skills/                             # 技能定义
 │   ├── software-requirements-analysis/
 │   │   ├── SKILL.md
@@ -67,15 +67,15 @@ product-manager-agent/
 | 命令 | 描述 |
 |--------|------|
 | `/new` 或 `/start` | 开始新项目（0-1 模式） |
-| `/status` | 查看当前项目进度 |
+| `/progress` | 查看当前项目进度 |
 | `/ui` | 生成 UI 原型提示词 |
 | `/design` | 开始 UI/UX 设计开发 |
 | `/plan` | 创建技术实现方案 |
 | `/develop` | 开始代码开发实现 |
-| `/test` | 运行测试验证功能 |
+| `/verify` | 运行测试验证功能 |
 | `/feature <描述>` | 添加新功能（迭代模式） |
 | `/update <描述>` | 修改现有功能（迭代模式） |
-| `/review` | 对照产品文档检查功能完整性 |
+| `/audit` | 对照产品文档检查功能完整性 |
 
 ## 完整工作流程
 
@@ -94,7 +94,7 @@ product-manager-agent/
 10. 调用 ui-ux-pro（前端开发）
 11. 用户: /develop
 12. 调用 superpowers:test-driven-development（后端开发）
-13. 用户: /test
+13. 用户: /verify
 14. 调用 superpowers:verification-before-completion（测试验证）
 15. 部署上线
 ```
@@ -107,9 +107,9 @@ product-manager-agent/
 3. 调用 spec-kit（技术评估）
 4. 用户: /develop
 5. 调用 superpowers:test-driven-development（实现变更）
-6. 用户: /test
+6. 用户: /verify
 7. 调用 superpowers:verification-before-completion（运行测试）
-8. 用户: /review（验收检查）
+8. 用户: /audit（验收检查）
 ```
 
 ## 子技能说明
@@ -120,7 +120,7 @@ product-manager-agent/
 | `ui-prompt-generator` | `/ui` | `UI-Prompts.md` |
 | `ui-ux-pro` | `/design` | 前端代码项目 |
 | `spec-kit` | `/plan` | 技术规范文档、架构设计 |
-| `superpowers` | `/develop`, `/test`, `/review` | 开发计划、测试代码、实现代码 |
+| `superpowers` | `/develop`, `/verify`, `/audit` | 开发计划、测试代码、实现代码 |
 | `uv-skill` | Python 操作时自动使用 | `pyproject.toml`, `uv.lock`, `.venv/` |
 
 ## 注意事项

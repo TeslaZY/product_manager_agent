@@ -62,15 +62,15 @@ cd /path/to/product-manager-agent
 | 命令 | 描述 | 适用模式 |
 |------|------|----------|
 | `/new` / `/start` | 开始新项目 | 0-1 模式 |
-| `/status` | 查看当前项目进度 | 任意 |
+| `/progress` | 查看当前项目进度 | 任意 |
 | `/ui` | 生成 UI 原型提示词 | 0-1 模式 |
 | `/design` | 开始 UI/UX 设计开发 | 任意 |
 | `/plan` | 创建技术实现方案 | 任意 |
 | `/develop` | 开始代码开发实现 | 任意 |
-| `/test` | 运行测试验证功能 | 任意 |
+| `/verify` | 运行测试验证功能 | 任意 |
 | `/feature <描述>` | 添加新功能 | 迭代模式 |
 | `/update <描述>` | 修改现有功能 | 迭代模式 |
-| `/review` | 对照产品文档检查功能完整性 | 迭代模式 |
+| `/audit` | 对照产品文档检查功能完整性 | 迭代模式 |
 
 ## 使用流程
 
@@ -96,7 +96,7 @@ cd /path/to/product-manager-agent
 /product-manager-agent:develop
 
 # 7. 运行测试
-/product-manager-agent:test
+/product-manager-agent:verify
 ```
 
 ### 迭代模式（修改现有项目）
@@ -112,10 +112,10 @@ cd /path/to/product-manager-agent
 /product-manager-agent:develop
 
 # 4. 运行测试
-/product-manager-agent:test
+/product-manager-agent:verify
 
 # 5. 验收检查
-/product-manager-agent:review
+/product-manager-agent:audit
 ```
 
 ## 项目结构
@@ -124,6 +124,17 @@ cd /path/to/product-manager-agent
 product-manager-agent/
 ├── .claude-plugin/              # 插件元数据
 ├── commands/                    # 用户可调用命令
+│   ├── new.md
+│   ├── start.md
+│   ├── ui.md
+│   ├── design.md
+│   ├── plan.md
+│   ├── develop.md
+│   ├── verify.md
+│   ├── feature.md
+│   ├── update.md
+│   ├── audit.md
+│   └── progress.md
 ├── skills/                      # 技能定义
 │   ├── software-requirements-analysis/  # 需求收集
 │   ├── ui-prompt-generator/          # UI 提示词生成
@@ -158,8 +169,7 @@ product-manager-agent/
 6. **uv 管理** - Python 项目必须使用 uv，禁止使用 pip
 
 ## AI 增强建议
-
-产品经理会主动建议以下 AI 简化场景：
+产品经理Agent会主动建议以下 AI 简化场景：
 
 | 场景 | AI 增强 |
 |------|---------|

@@ -27,15 +27,15 @@ At startup, automatically detect the project state and enter the appropriate mod
 | Command | Description | Trigger Phase |
 |---------|-------------|----------------|
 | `/new` or `/start` | Start new project (0-1 mode) | Requirements |
-| `/status` | View current project progress | Any |
+| `/progress` | View current project progress | Any |
 | `/ui` | Generate UI prototype prompts | UI Design |
 | `/design` | Begin UI/UX design and development | Frontend |
 | `/plan` | Create technical implementation plan | Architecture |
 | `/develop` | Begin code development implementation | Coding |
-| `/test` | Run tests and verify functionality | Testing |
+| `/verify` | Run tests and verify functionality | Testing |
 | `/feature <description>` | Add new feature (iteration mode) | Iteration |
 | `/update <description>` | Modify existing feature (iteration mode) | Iteration |
-| `/review` | Check implementation completeness against product spec | Acceptance |
+| `/audit` | Check implementation completeness against product spec | Acceptance |
 
 ## Complete Workflow: 0-1 Mode (New Project)
 
@@ -77,7 +77,7 @@ At startup, automatically detect the project state and enter the appropriate mod
    - Backend implementation
    - Use uv-skill for dependency management
    ↓
-13. User: /test
+13. User: /verify
    ↓
 14. Invoke superpowers:verification-before-completion
    - Run tests
@@ -107,12 +107,12 @@ At startup, automatically detect the project state and enter the appropriate mod
 5. Invoke superpowers:test-driven-development
    - Implement changes
    ↓
-6. User: /test
+6. User: /verify
    ↓
 7. Invoke superpowers:verification-before-completion
    - Run tests
    ↓
-8. User: /review
+8. User: /audit
    ↓
 9. Verify feature completeness against product documentation
 ```
@@ -140,11 +140,11 @@ At startup, automatically detect the project state and enter the appropriate mod
 - **Core**: Spec-Driven Development, intent-driven development
 
 ### superpowers
-- **Trigger**: `/develop`, `/test`, `/review`
+- **Trigger**: `/develop`, `/verify`, `/audit`
 - **Output**: Development plans, test code, implementation code
 - **Core**: Test-driven development, systematic debugging, code review
 
-### uv-skill
+### uv-skill/
 - **Usage**: Any operation involving Python
 - **Output**: `pyproject.toml`, `uv.lock`, `.venv/`
 - **Core**: Enforce uv for dependency management
