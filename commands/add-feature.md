@@ -79,7 +79,7 @@ Record the feature addition:
 ### Feature Addition: [Date]
 **New Feature:** [feature description]
 **Tasks Added:** [list of new task IDs]
-**Next Step:** Run `/continue` to implement
+**Next Step:** Run `/p2c-agent:project-continue` to implement
 ```
 
 ### 7. Commit Changes

@@ -1,24 +1,27 @@
 {
-  "name": "Long-running_Product_Agent",
-  "description": "Long-running full-stack development agent with task-based workflow, session management, and complete SDLC automation from requirements to deployment",
-  "version": "2.0.0",
+  "name": "p2c-agent",
+  "description": "Product-to-Code Agent: Transform product ideas into production code autonomously. From requirements to deployment - handles specs, design, coding, testing, and review automatically.",
+  "version": "2.1.0",
   "author": {
     "name": "TeslaZY",
     "email": "TeslaZY@outlook.com"
   },
-  "homepage": "https://github.com/TeslaZY/Long-running_Product_Agent",
-  "repository": "https://github.com/TeslaZY/Long-running_Product_Agent",
+  "homepage": "https://github.com/TeslaZY/product-to-code",
+  "repository": "https://github.com/TeslaZY/product-to-code",
   "license": "MIT",
   "keywords": [
-    "long-running",
-    "product-manager",
+    "product-to-code",
+    "p2c",
+    "autonomous-agent",
+    "product-development",
     "fullstack",
-    "ui-design",
-    "tdd",
+    "requirements-gathering",
     "spec-driven",
-    "workflow",
-    "autonomous",
     "task-based",
-    "session-management"
+    "session-management",
+    "tdd",
+    "ui-design",
+    "code-generation",
+    "sdlc-automation"
   ]
 }

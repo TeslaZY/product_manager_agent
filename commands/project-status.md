@@ -37,9 +37,9 @@ Progress: [X/Y tasks]
 
 ## 5. Next Recommended Action
 Based on the current state, suggest:
-- If no task-list.json exists: Run `/init` to start
+- If no task-list.json exists: Run `/p2c-agent:project-init` to start
 - If tasks pending: Show highest priority next task
-- If all complete: Suggest `/audit` or deployment
+- If all complete: Suggest `/p2c-agent:project-verify` or deployment
 
 ## Output Format
 

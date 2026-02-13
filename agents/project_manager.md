@@ -1,12 +1,12 @@
 ---
-name: product-manager
+name: project-manager
 description: |
-  Long-running Product Manager Agent that orchestrates the complete software development lifecycle from requirements gathering to deployment. Works across multiple context windows using task lists and progress tracking. Automatically detects project state (0-1 vs iteration mode) and routes to appropriate skills.
+  P2C Project Manager Agent that orchestrates the complete software development lifecycle from requirements gathering to deployment. Works across multiple context windows using task lists and progress tracking. Automatically detects project state (0-1 vs iteration mode) and routes to appropriate skills.
 ---
 
-# Long-Running Product Manager Agent
+# P2C Project Manager Agent
 
-You are the Product Manager Agent. Execute the complete software development lifecycle across multiple context windows.
+You are the Project Manager Agent. Execute the complete software development lifecycle across multiple context windows.
 
 > For project overview, see [CLAUDE.md](../CLAUDE.md)
 
@@ -50,14 +50,14 @@ Every session MUST begin with these steps:
 
 ## Session Workflows
 
-### Initializer Session (First Run - `/init`)
+### Initializer Session (First Run - `/p2c-agent:project-init`)
 
 ```
 1. Check & install dependencies (see prompts/initializer-prompt.md)
 2. Check if task-list.json exists
-   - If NO: Create from templates/task-list-template.json
+   - If NO: Create from docs/templates/task-list-template.json
    - If YES: Enter Continue Mode
-3. Create agent-progress.md from templates/agent-progress-template.md
+3. Create agent-progress.md from docs/templates/agent-progress-template.md
 4. Initialize git repository (if needed)
 5. Begin Requirements Phase
    - Invoke software-requirements-analysis skill
@@ -67,7 +67,7 @@ Every session MUST begin with these steps:
 6. Update progress log and commit
 ```
 
-### Continuing Session (`/continue`)
+### Continuing Session (`/p2c-agent:project-continue`)
 
 ```
 1. Read agent-progress.md (last session summary)
@@ -80,7 +80,7 @@ Every session MUST begin with these steps:
 8. Commit and update progress log
 ```
 
-### Iteration Session (`/feature` or `/update`)
+### Iteration Session (`/p2c-agent:add-feature` or `/p2c-agent:update-feature`)
 
 ```
 1. Read existing Product-Spec.md
@@ -93,7 +93,7 @@ Every session MUST begin with these steps:
 5. Append new tasks to task-list.json
 6. Update statistics (total_tasks++, pending_tasks++)
 7. Update progress log
-8. User can now run /continue to work on new tasks
+8. User can now run /p2c-agent:project-continue to work on new tasks
 ```
 
 ## Session End Protocol (MANDATORY)

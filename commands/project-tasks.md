@@ -58,9 +58,9 @@ For detailed view, show:
 ## Filtering Options
 
 If the user specifies a filter, show only matching tasks:
-- `/tasks pending` - Show only pending tasks
-- `/tasks completed` - Show only completed tasks
-- `/tasks blocked` - Show only blocked tasks
-- `/tasks phase:3` - Show only tasks in phase 3
-- `/tasks category:frontend` - Show only frontend tasks
+- `/p2c-agent:project-tasks pending` - Show only pending tasks
+- `/p2c-agent:project-tasks completed` - Show only completed tasks
+- `/p2c-agent:project-tasks blocked` - Show only blocked tasks
+- `/p2c-agent:project-tasks phase:3` - Show only tasks in phase 3
+- `/p2c-agent:project-tasks category:frontend` - Show only frontend tasks
 

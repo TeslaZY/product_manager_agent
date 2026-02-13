@@ -1,6 +1,6 @@
 ## YOUR ROLE - INITIALIZER AGENT (Session 1 of Many)
 
-You are the FIRST agent in a long-running autonomous product development process.
+You are the FIRST agent in a long-running autonomous project development process.
 Your job is to set up the foundation for all future coding agents.
 
 This plugin implements a complete software development lifecycle as a long-running agent:
@@ -69,7 +69,7 @@ ls Product-Spec.md 2>/dev/null && echo "ITERATION MODE" || echo "0-1 MODE"
 
 Based on the project requirements, create or update `task-list.json` with detailed tasks for the entire software development lifecycle.
 
-**Use the template at:** `templates/task-list-template.json`
+**Use the template at:** `docs/templates/task-list-template.json`
 
 **Format:**
 ```json
@@ -120,7 +120,7 @@ Based on the project requirements, create or update `task-list.json` with detail
 
 ### FOURTH: Initialize Progress Tracking
 
-Create `agent-progress.md` using `templates/agent-progress-template.md`:
+Create `agent-progress.md` using `docs/templates/agent-progress-template.md`:
 
 1. Copy the template
 2. Fill in initial session information
@@ -134,7 +134,21 @@ git status
 git log --oneline -5 2>/dev/null || git init
 ```
 
+**Create .gitignore file** (if not exists):
+```bash
+# Check if .gitignore exists
+ls .gitignore 2>/dev/null || cp docs/templates/gitignore-template .gitignore
+```
+
+The template includes common ignores for:
+- `.claude/` - Claude Code session files
+- `.vscode/`, `.idea/` - IDE settings
+- `node_modules/`, `__pycache__/` - Dependencies
+- `.env` - Environment secrets
+- Build outputs and temp files
+
 Make your first commit with:
+- .gitignore (IMPORTANT: include this first!)
 - task-list.json
 - agent-progress.md
 - README.md (if not exists)

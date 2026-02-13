@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with th
 
 ## Project Overview
 
-**Long-Running Product Fullstack Agent** - 基于 [Anthropic Long-Running Agents](https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents) 方法论的全栈开发插件。
+**P2C Agent (Product-to-Code)** - 基于 [Anthropic Long-Running Agents](https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents) 方法论的全栈开发插件。
 
 **核心理念：** 用户只需说出产品想法，Agent 自动完成需求追问、文档生成、原型设计、代码开发。
 
@@ -16,18 +16,18 @@ This file provides guidance to Claude Code (claude.ai/code) when working with th
 
 | Command | Purpose |
 |---------|---------|
-| `/init` | Initialize new project |
-| `/continue` | **Core** - Resume work on next task |
-| `/progress` | View current progress |
-| `/tasks` | List all tasks |
-| `/feature <desc>` | Add new feature |
-| `/update <desc>` | Modify existing feature |
-| `/audit` | Verify completeness before deploy |
+| `/p2c-agent:project-init` | Initialize new project |
+| `/p2c-agent:project-continue` | **Core** - Resume work on next task |
+| `/p2c-agent:project-status` | View current progress |
+| `/p2c-agent:project-tasks` | List all tasks |
+| `/p2c-agent:add-feature <desc>` | Add new feature |
+| `/p2c-agent:update-feature <desc>` | Modify existing feature |
+| `/p2c-agent:project-verify` | Verify completeness before deploy |
 
 ### Workflow
 
 ```
-/init → /continue → /continue → ... → /audit → deploy
+/p2c-agent:project-init → /p2c-agent:project-continue → /p2c-agent:project-continue → ... → /p2c-agent:project-verify → deploy
 ```
 
 ### Mode Detection
@@ -42,16 +42,18 @@ This file provides guidance to Claude Code (claude.ai/code) when working with th
 ## Plugin Architecture
 
 ```
-Long-running_Product_Agent/
+p2c-agent/
 ├── CLAUDE.md                  # This file (project context)
-├── agents/product_manager.md  # Agent execution logic
+├── agents/project_manager.md  # Agent execution logic
 ├── prompts/                   # Session prompts
 │   ├── initializer-prompt.md
 │   └── coding-agent-prompt.md
 ├── commands/                  # 7 user commands
-├── skills/                    # Skill definitions
-├── templates/                 # Task list & progress templates
-└── demo/WORKFLOW_DEMO.md      # Complete workflow demo
+├── skills/                    # Core skill definitions
+└── docs/                      # Documentation
+    ├── DEPENDENCIES.md        # Dependency installation guide
+    ├── WORKFLOW_DEMO.md       # Complete workflow demo
+    └── templates/             # Task list & progress templates
 ```
 
 ## Key Principles
@@ -66,5 +68,5 @@ Long-running_Product_Agent/
 
 - [Effective Harnesses for Long-Running Agents](https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents)
 - [Claude Quickstarts: Autonomous Coding](https://github.com/anthropics/claude-quickstarts/tree/main/autonomous-coding)
-- [demo/WORKFLOW_DEMO.md](demo/WORKFLOW_DEMO.md) - Complete workflow example
-- [agents/product_manager.md](agents/product_manager.md) - Detailed execution logic
+- [docs/WORKFLOW_DEMO.md](docs/WORKFLOW_DEMO.md) - Complete workflow example
+- [agents/project_manager.md](agents/project_manager.md) - Detailed execution logic

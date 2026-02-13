@@ -1,6 +1,6 @@
-# Demo: Long-Running Product Agent Workflow
+# Demo: P2C Agent Workflow
 
-This document demonstrates the complete workflow of the Long-Running Product Agent plugin.
+This document demonstrates the complete workflow of the P2C Agent plugin.
 
 ## Scenario
 
@@ -12,7 +12,7 @@ We'll simulate building a simple **Todo App** from scratch.
 
 ### User Action
 ```
-/init
+/p2c-agent:project-init
 ```
 
 ### What Happens
@@ -127,7 +127,7 @@ $ git commit -m "Initial setup: Todo App project structure
 ### Session 1 End State
 - Phase 1 (Requirements): 4/4 tasks completed
 - Phase 2-9: pending
-- Next: `/continue` to start Technical Specification
+- Next: `/p2c-agent:project-continue` to start Technical Specification
 
 ---
 
@@ -135,7 +135,7 @@ $ git commit -m "Initial setup: Todo App project structure
 
 ### User Action
 ```
-/continue
+/p2c-agent:project-continue
 ```
 
 ### What Happens
@@ -185,7 +185,7 @@ Creating technical specifications...
 - Phase 1: completed
 - Phase 2: completed (4/4)
 - Phase 3-9: pending
-- Next: `/continue` for UI/UX Design
+- Next: `/p2c-agent:project-continue` for UI/UX Design
 
 ---
 
@@ -193,7 +193,7 @@ Creating technical specifications...
 
 ### User Action
 ```
-/continue
+/p2c-agent:project-continue
 ```
 
 ### What Happens
@@ -228,7 +228,7 @@ Agent: Documenting design decision. Marking ui-002 as complete.
 - Phase 1-2: completed
 - Phase 3: completed (2/2)
 - Phase 4-9: pending
-- Next: `/continue` for Architecture Planning
+- Next: `/p2c-agent:project-continue` for Architecture Planning
 
 ---
 
@@ -236,7 +236,7 @@ Agent: Documenting design decision. Marking ui-002 as complete.
 
 ### User Action
 ```
-/continue
+/p2c-agent:project-continue
 ```
 
 ### What Happens
@@ -255,7 +255,7 @@ Agent continues through:
 
 ### User Action
 ```
-/continue
+/p2c-agent:project-continue
 ```
 
 ### What Happens
@@ -269,12 +269,12 @@ Agent continues through:
 
 ### User Action
 ```
-/continue
+/p2c-agent:project-continue
 ```
 
 Then:
 ```
-/audit
+/p2c-agent:project-verify
 ```
 
 ### What Happens
@@ -289,6 +289,8 @@ Reviewing implementation against Product-Spec.md...
 ⚠ Minor: Consider adding loading states
 
 Report saved to review-report.md
+
+2. **Final Audit**
 ```
 
 2. **Final Audit**
@@ -340,7 +342,7 @@ After deployment, user wants to add a "Due Date" feature.
 
 ### User Action
 ```
-/feature Add due date to tasks
+/p2c-agent:add-feature Add due date to tasks
 ```
 
 ### What Happens
@@ -384,7 +386,7 @@ Updates `task-list.json`:
 
 4. **Continue Development**
 ```
-User: /continue
+User: /p2c-agent:project-continue
 Agent: Working on be-new-001: Add due date field to task model...
 ```
 
@@ -398,7 +400,7 @@ User wants to change the login flow to add 2FA.
 
 ### User Action
 ```
-/update Add 2FA to login flow
+/p2c-agent:update-feature Add 2FA to login flow
 ```
 
 ### What Happens
@@ -456,13 +458,13 @@ Updates `task-list.json`:
 
 | Command | When | Result |
 |---------|------|--------|
-| `/init` | Session 1 | Initialized project, checked deps, created task list |
-| `/continue` | Sessions 2-6 | Executed next task in sequence |
-| `/progress` | Any time | Viewed current status |
-| `/tasks` | Any time | Listed all tasks |
-| `/feature` | Iteration | Added new feature tasks |
-| `/update` | Iteration | Added modification tasks |
-| `/audit` | Before deploy | Verified completeness with detailed report |
+| `/p2c-agent:project-init` | Session 1 | Initialized project, checked deps, created task list |
+| `/p2c-agent:project-continue` | Sessions 2-6 | Executed next task in sequence |
+| `/p2c-agent:project-status` | Any time | Viewed current status |
+| `/p2c-agent:project-tasks` | Any time | Listed all tasks |
+| `/p2c-agent:add-feature` | Iteration | Added new feature tasks |
+| `/p2c-agent:update-feature` | Iteration | Added modification tasks |
+| `/p2c-agent:project-verify` | Before deploy | Verified completeness with detailed report |
 
 ---
 

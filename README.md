@@ -1,13 +1,13 @@
-# Long-Running Product Fullstack Agent
+# P2C Agent (Product-to-Code)
 
-> 长期运行的全栈开发 Agent 插件 - 基于 Anthropic Long-Running Agents 方法论，从产品想法到上线部署，跨多个上下文窗口稳定运行
+> 从产品想法到生产代码 - 基于 Anthropic Long-Running Agents 方法论的全栈开发 Agent 插件
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Version](https://img.shields.io/badge/version-2.0.0-blue.svg)](https://github.com/TeslaZY/Long-running_Product_Agent)
+[![Version](https://img.shields.io/badge/version-2.1.0-blue.svg)](https://github.com/TeslaZY/product-to-code)
 
 ## 概述
 
-Long-Running Product Fullstack Agent 是一个基于 [Anthropic 的 Long-Running Agents 方法论](https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents) 构建的 Claude Code 插件。它让 AI 能够跨多个上下文窗口稳定运行，完成完整的软件开发流程：
+P2C Agent (Product-to-Code Agent) 是一个基于 [Anthropic 的 Long-Running Agents 方法论](https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents) 构建的 Claude Code 插件。它让 AI 能够跨多个上下文窗口稳定运行，完成完整的软件开发流程：
 
 ```
 需求调研 → 技术规格 → UI/UX 设计 → 架构规划 → 编码实现 → 测试验证 → 代码审查 → 部署交付
@@ -21,82 +21,80 @@ Long-Running Product Fullstack Agent 是一个基于 [Anthropic 的 Long-Running
 
 - 🔄 **Long-Running 架构** - 跨多个上下文窗口稳定运行
 - 📋 **任务列表系统** - `task-list.json` 作为唯一真实来源
-- 🎯 **7 个精简命令** - 用户只需 `/init` → `/continue` → `/audit`
+- 🎯 **7 个精简命令** - 用户只需 `/p2c-agent:project-init` → `/p2c-agent:project-continue` → `/p2c-agent:project-verify`
 - 📝 **文档驱动开发** - Spec-Driven Development + 文档同步
-- 🔧 **自动依赖管理** - `/init` 时自动检测并引导安装
+- 🔧 **自动依赖管理** - `/p2c-agent:project-init` 时自动检测并引导安装
 - 🧪 **验证测试** - 每次开始前验证之前的工作仍然正常
 
 ## 安装
 
-### 方式一：本地安装（推荐）
-
-```bash
-cd /path/to/Long-running_Product_Agent
-/plugin install . --name long-running-product-agent
+在 Claude Code 中执行：
 ```
+# 添加 marketplace
+/plugin marketplace add TeslaZY/product-to-code
 
-### 方式二：通过插件市场安装
-
-```bash
-/plugin marketplace add <marketplace-name>
-/plugin install Long-running_Product_Agent@<marketplace-name>
+# 安装插件
+/plugin install p2c-agent@product-to-code
 ```
 
 ### 验证安装
 
-```bash
+在 Claude Code 中，在目标项目目录下执行：
+```
 /help
 ```
 
-应看到 7 个命令：`/init`, `/continue`, `/progress`, `/tasks`, `/feature`, `/update`, `/audit`
+应看到 7 个命令：`/p2c-agent:project-init`, `/p2c-agent:project-continue`, `/p2c-agent:project-status`, `/p2c-agent:project-tasks`, `/p2c-agent:add-feature`, `/p2c-agent:update-feature`, `/p2c-agent:project-verify`
 
 ## 快速开始
 
 ### 0-1 模式（新建项目）
 
-```bash
-/init        # 首次会话：初始化项目、收集需求
-/continue    # 后续会话：自动执行下一任务
-/continue    # 继续执行...
-/audit       # 部署前验收
+在 Claude Code 中执行：
+```
+/p2c-agent:project-init        # 首次会话：初始化项目、收集需求
+/p2c-agent:project-continue    # 后续会话：自动执行下一任务
+/p2c-agent:project-continue    # 继续执行...
+/p2c-agent:project-verify      # 部署前验收
 ```
 
 ### 迭代模式（修改现有项目）
 
-```bash
-/feature 添加用户个人资料页面   # 添加新功能
+在 Claude Code 中执行：
+```
+/p2c-agent:add-feature 添加用户个人资料页面   # 添加新功能
 # 或
-/update 修改登录流程           # 修改现有功能
+/p2c-agent:update-feature 修改登录流程           # 修改现有功能
 
-/continue    # 实现新任务
-/audit       # 验收
+/p2c-agent:project-continue    # 实现新任务
+/p2c-agent:project-verify      # 验收
 ```
 
 ## 可用命令
 
 | 命令 | 描述 | 使用时机 |
 |------|------|----------|
-| `/init` | 初始化项目 + 依赖检测 | 开始新项目 |
-| `/continue` | **核心命令** - 继续执行下一任务 | 每个后续会话 |
-| `/progress` | 查看当前项目进度 | 了解状态 |
-| `/tasks` | 列出所有任务和状态 | 查看任务列表 |
-| `/feature <描述>` | 添加新功能 | 迭代模式 |
-| `/update <描述>` | 修改现有功能 | 迭代模式 |
-| `/audit` | 对照产品文档验收 | 部署前 |
+| `/p2c-agent:project-init` | 初始化项目 + 依赖检测 | 开始新项目 |
+| `/p2c-agent:project-continue` | **核心命令** - 继续执行下一任务 | 每个后续会话 |
+| `/p2c-agent:project-status` | 查看当前项目进度 | 了解状态 |
+| `/p2c-agent:project-tasks` | 列出所有任务和状态 | 查看任务列表 |
+| `/p2c-agent:add-feature <描述>` | 添加新功能 | 迭代模式 |
+| `/p2c-agent:update-feature <描述>` | 修改现有功能 | 迭代模式 |
+| `/p2c-agent:project-verify` | 对照产品文档验收 | 部署前 |
 
 ## 依赖管理
 
-运行 `/init` 时会自动检测依赖并引导安装：
+运行 `/p2c-agent:project-init` 时会自动检测依赖并引导安装：
 
 - **必需**：Git
 - **可选**：uv（Python）、specify-cli（规格驱动开发）
 - **插件**：superpowers（开发工作流）、ui-ux-pro（UI 设计）
 
-详见 [DEPENDENCIES.md](DEPENDENCIES.md)
+详见 [docs/DEPENDENCIES.md](docs/DEPENDENCIES.md)
 
 ## 任务自动执行流程
 
-`/continue` 根据 `task-list.json` 自动执行对应阶段：
+`/p2c-agent:project-continue` 根据 `task-list.json` 自动执行对应阶段：
 
 | 阶段 | 任务 ID | 自动调用的技能 |
 |------|---------|---------------|
@@ -113,19 +111,19 @@ cd /path/to/Long-running_Product_Agent
 ## 项目结构
 
 ```
-Long-running_Product_Agent/
+p2c-agent/
 ├── CLAUDE.md                    # 项目级上下文（AI 自动加载）
 ├── agents/
-│   └── product_manager.md       # Agent 执行逻辑
+│   └── project_manager.md       # Agent 执行逻辑
 ├── prompts/                     # 会话提示词
 │   ├── initializer-prompt.md    # 首次会话
 │   └── coding-agent-prompt.md   # 后续会话
 ├── commands/                    # 7 个用户命令
-├── skills/                      # 技能定义
-├── templates/                   # 任务列表 & 进度模板
-├── demo/
-│   └── WORKFLOW_DEMO.md         # 完整工作流演示
-└── DEPENDENCIES.md              # 依赖说明
+├── skills/                      # 核心技能定义
+└── docs/                        # 文档
+    ├── DEPENDENCIES.md          # 依赖安装说明
+    ├── WORKFLOW_DEMO.md         # 完整工作流演示
+    └── templates/               # 任务列表 & 进度模板
 ```
 
 ## 核心原则
@@ -141,9 +139,9 @@ Long-running_Product_Agent/
 | 文档 | 内容 |
 |------|------|
 | [CLAUDE.md](CLAUDE.md) | 项目级上下文、快速参考 |
-| [agents/product_manager.md](agents/product_manager.md) | 详细执行逻辑、会话协议 |
-| [demo/WORKFLOW_DEMO.md](demo/WORKFLOW_DEMO.md) | 完整工作流演示 |
-| [DEPENDENCIES.md](DEPENDENCIES.md) | 依赖安装说明 |
+| [agents/project_manager.md](agents/project_manager.md) | 详细执行逻辑、会话协议 |
+| [docs/WORKFLOW_DEMO.md](docs/WORKFLOW_DEMO.md) | 完整工作流演示 |
+| [docs/DEPENDENCIES.md](docs/DEPENDENCIES.md) | 依赖安装说明 |
 
 ## 参考资料
 

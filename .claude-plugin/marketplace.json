@@ -1,20 +1,22 @@
 {
-  "name": "product-agent-marketplace",
-  "description": "Long-Running Product Fullstack Agent plugin for Claude Code - autonomous software development across multiple sessions",
+  "name": "product-to-code",
+  "description": "Transform product ideas into production code. Autonomous full-stack development agent that works across multiple sessions.",
   "owner": {
     "name": "TeslaZY",
-    "email": "TeslaZY@outlook.com"
+    "email": "TeslaZY@outlook.com",
+    "url": "https://github.com/TeslaZY"
   },
   "plugins": [
     {
-      "name": "Long-running_Product_Agent",
-      "description": "Long-running full-stack development agent with task-based workflow, session management, and complete SDLC automation from requirements to deployment",
-      "version": "2.0.0",
+      "name": "p2c-agent",
+      "description": "Product-to-Code Agent: Complete SDLC automation from requirements gathering to deployment. Works across unlimited context windows.",
+      "version": "2.1.0",
       "source": "./",
       "author": {
         "name": "TeslaZY",
         "email": "TeslaZY@outlook.com"
-      }
+      },
+      "tags": ["automation", "fullstack", "product-to-code", "sdlc", "autonomous"]
     }
   ]
 }

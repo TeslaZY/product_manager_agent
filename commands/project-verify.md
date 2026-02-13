@@ -29,7 +29,7 @@ Check task-list.json statistics:
 }
 ```
 
-If `pending_tasks > 0`, warn user and suggest `/continue` first.
+If `pending_tasks > 0`, warn user and suggest `/p2c-agent:project-continue` first.
 
 ### 3. Feature Completeness Check
 
@@ -176,7 +176,7 @@ Detailed report saved to: audit-report.md
 | Status | Meaning | Next Action |
 |--------|---------|-------------|
 | READY | All checks pass, deployment approved | Proceed to deploy |
-| NOT READY | Issues found that block deployment | Fix issues, run `/audit` again |
+| NOT READY | Issues found that block deployment | Fix issues, run `/p2c-agent:project-verify` again |
 
 ## Important Rules
 

@@ -1,6 +1,6 @@
 ## YOUR ROLE - CODING AGENT
 
-You are continuing work on a long-running autonomous product development task.
+You are continuing work on a long-running autonomous project development task.
 This is a FRESH context window - you have no memory of previous sessions.
 
 This plugin manages the complete software development lifecycle:

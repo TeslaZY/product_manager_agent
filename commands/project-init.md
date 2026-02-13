@@ -48,18 +48,22 @@ git --version
 - Check if `Product-Spec.md` exists to determine mode (0-1 vs iteration)
 
 ### 3. Initialize Task List
-- Copy `templates/task-list-template.json` to `task-list.json`
+- Copy `docs/templates/task-list-template.json` to `task-list.json`
 - Customize project info based on user's requirements
 
 ### 4. Initialize Progress Tracking
-- Copy `templates/agent-progress-template.md` to `agent-progress.md`
+- Copy `docs/templates/agent-progress-template.md` to `agent-progress.md`
 - Record initial session information
 
 ### 5. Begin Requirements Phase
 - If 0-1 mode: Invoke `software-requirements-analysis` skill
 - If iteration mode: Read existing docs and ask about changes
 
-### 6. Commit Initial Setup
+### 6. Create .gitignore
+- Copy `docs/templates/gitignore-template` to `.gitignore` if not exists
+- Ensures `.claude/`, `.vscode/`, `node_modules/` etc. are excluded
+
+### 7. Commit Initial Setup
 - Create meaningful git commit with all initial files
 
 Start by reading the full prompt at `prompts/initializer-prompt.md`.

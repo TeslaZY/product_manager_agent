@@ -85,7 +85,7 @@ Record the modification:
 **Modified Feature:** [feature description]
 **Original Task:** [original-task-id]
 **New Tasks Added:** [list of new task IDs]
-**Next Step:** Run `/continue` to implement changes
+**Next Step:** Run `/p2c-agent:project-continue` to implement changes
 ```
 
 ### 7. Commit Changes
@@ -109,10 +109,10 @@ git commit -m "Modify: [feature description]
 4. **Update statistics** - Reflect new tasks in counts
 5. **Increment version** - Update Product-Spec version with change type
 
-## Difference from /feature
+## Difference from /p2c-agent:add-feature
 
-| /feature | /update |
-|----------|---------|
+| /p2c-agent:add-feature | /p2c-agent:update-feature |
+|--------------|-----------------|
 | Adds completely new functionality | Modifies existing functionality |
 | Creates new feature modules | Extends/refactors existing code |
 | Task ID: `*-new-*` or `*-enhance-*` | Task ID: `*-modify-*` or `*-fix-*` |

@@ -12,7 +12,7 @@ description: UI 提示词设计师：根据产品文档生成原型图提示词�
 ### 1. 前置检查
 **必须先确认存在产品文档**
 - 读取项目根目录的 `Product-Spec.md`
-- 如果不存在，提醒用户先使用 `/prd` 生成产品文档
+- 如果不存在，提醒用户先执行 `/p2c-agent:project-init` 生成产品文档
 - 确认后再继续生成提示词
 
 ### 2. 分析产品文档
@@ -118,6 +118,6 @@ Form page with step-by-step layout, input fields with validation states, progres
 
 ## 触发条件
 
+- 任务列表中 `ui-001` 任务开始时自动触发
 - 用户说"生成 UI"时自动触发
 - 用户说"要原型图"时自动触发
-- 显式调用 `/ui` 指令时强制触发
